@@ -1,0 +1,14 @@
+Importação e Exportação de Times.
+
+Caso de Uso Geral:  Controle de Times.
+
+Nome do Caso de Uso | Exportação de Jogadores
+Ator Principal | Usuário Autenticado
+Resumo | Ao entrar na tela de times, o usuário autenticado poderá exportar a lista de jogadores de um time proveniente do banco de dados. A exportação de jogadores virá com base nos nomes dos jogadores, sendo necessário escolher um time e acionar a operação de exportação.
+
+Nome do Caso de Uso | Importação de Jogadores
+Ator Principal | Usuário Autenticado
+Resumo | Ao entrar na tela de times, o usuário poderá acionar a opção de importação, onde irá escolher um time e anexar um arquivo em formato json com a lista de nomes de jogadores, essa lista então será carregada para o banco de dados e colocada como os jogadores do time selecionado.
+
+
+
