@@ -1,0 +1,3 @@
+O caso de uso que será usado para persistência de arquivos txt é a persistência
+de logs, logs serão persistidos automaticamente e haverá uma interface
+específica par visualizá-los
