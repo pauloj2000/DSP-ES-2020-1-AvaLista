@@ -1,0 +1,3 @@
+A api que iremos utilizar é da plataforma https://www.scorebat.com/video-api/,
+que iremos consultar para apresentar vídeos e informações de oturos jogos de
+futebol acontecendo simultaneamente em outros lugares.
