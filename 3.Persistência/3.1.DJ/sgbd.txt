@@ -1,0 +1,3 @@
+O sgbd escolhido foi o PostgreSQL, por ser uma ferramenta open source,
+multiplataforma e facilmente configurável além de ser extremamente
+performático e flexível.
