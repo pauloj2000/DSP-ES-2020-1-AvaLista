@@ -1,9 +1,0 @@
-Gravação em NoSQL.
-
-Caso de Uso Geral:  Controle de Usuários.
-
-Nome do Caso de Uso | Cadastro de Usuários
-Ator Principal | Usuário Autenticado
-Resumo | Ao entrar na tela de controle de usuários poderá cadastrar/alterar/excluir um usuário informando o login e senha, que será salvo em um banco NoSQL, provavelmente MongoDB.
-
-
