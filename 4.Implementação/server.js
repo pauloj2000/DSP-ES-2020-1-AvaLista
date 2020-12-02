@@ -3,11 +3,53 @@
 // ================================================================
 // get all the tools we need
 // ================================================================
-var express = require('express');
-var routes = require('./routes/index.js');
-var port = process.env.PORT || 3000;
+const dotenv = require('dotenv');
+const result = dotenv.config()
+if (result.error) {
+  throw result.error
+}
 
-var app = express();
+const express = require('express');
+const session = require('express-session');
+
+const routes = require('./routes/index.js');
+const routesAuth = require('./routes/auth.js');
+
+
+
+const port = process.env.PORT || 3000;
+
+const app = express();
+app.use(express.urlencoded({ extended: false }))
+
+app.use(session({
+  resave: false, // don't save session if unmodified
+  saveUninitialized: false, // don't create session until something stored
+  secret: 'shhhhH, very secret'
+}));
+
+// Session-persisted message middleware
+
+app.use(function (req, res, next) {
+  var err = req.session.error;
+  var msg = req.session.success;
+  delete req.session.error;
+  delete req.session.success;
+  res.locals.message = '';
+  if (err) res.locals.message = '<p class="msg error">' + err + '</p>';
+  if (msg) res.locals.message = '<p class="msg success">' + msg + '</p>';
+  next();
+});
+
+const restrict = function (req, res, next) {
+  if (req.session.user) {
+    next();
+  } else {
+    req.session.error = 'Acesso negado!';
+    res.redirect('/login');
+  }
+}
+
 
 // ================================================================
 // setup our express application
@@ -19,11 +61,12 @@ app.set('view engine', 'ejs');
 // ================================================================
 // setup routes
 // ================================================================
-routes(app);
+routesAuth(app);
+routes(app, restrict);
 
 // ================================================================
 // start our server
 // ================================================================
-app.listen(port, function() {
-    console.log('Server listening on port ' + port + '...');
+app.listen(port, function () {
+  console.log('Server listening on port ' + port + '...');
 });

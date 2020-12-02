@@ -1,0 +1,32 @@
+<% include header %>
+
+
+<div id="main">
+  <div class="inner">
+
+    <!-- Form -->
+    <section>
+      <h2>Login</h2>
+      <form method="post" action="/login">
+        <div class="row gtr-uniform">
+          <div class="col-6 col-12-xsmall">
+            <input type="email" name="email" id="email" value="" placeholder="Email" />
+          </div>
+          <div class="col-6"></div>
+          <div class="col-6 col-12-xsmall">
+            <input type="password" name="password" id="password" value="" placeholder="Senha" />
+          </div>
+          <div class="col-12 col-12-xsmall">
+            <%- message %>
+          </div>
+          <div class="col-12">
+            <ul class="actions">
+              <li><input type="submit" value="Entrar" class="primary" /></li>
+            </ul>
+          </div>
+        </div>
+      </form>
+    </section>
+
+  </div>
+</div>
