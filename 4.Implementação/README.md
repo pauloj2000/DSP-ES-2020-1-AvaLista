@@ -1,6 +1,3 @@
-# Ejs-Boilerplate
-Turning html template (https://html5up.net/phantom) into a Nodejs Ejs template boilerplate.
-
 # Directory structure
 ```bash
 Html directory
@@ -38,7 +35,6 @@ Project directory
 
 # Installation
 ```
-git clone https://github.com/apeironla/Ejs-Boilerplate.git
-npm install
-node server 
+yarn
+yarn dev / yarn start
 ```
