@@ -1,0 +1,47 @@
+<% include ../partials/header %>
+<% include ../partials/navbar %>
+
+<div id="main">
+  <div class="inner">
+    <h1>Times</h1>
+
+    <!-- Table -->
+    <section>
+
+      <a href="/times/importar" class="button primary small">Importar Jogadores</a>
+      <a href="/times/exportar" class="button default small">Exportar Jogadores</a>
+
+      <hr>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Score Total Jogadores</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% times.forEach(function(time) { %>
+            <tr>
+              <td> <%= time.id %> </td>
+              <td> <%= time.nome %> </td>
+              <td> <%= time.score %> </td>
+            </tr>
+            <% }); %>
+          </tbody>
+          <!-- <tfoot>
+            <tr>
+              <td colspan="2"></td>
+              <td>100.00</td>
+            </tr>
+          </tfoot> -->
+        </table>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<% include ../partials/footer %>

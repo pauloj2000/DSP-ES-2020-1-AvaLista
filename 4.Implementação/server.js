@@ -12,6 +12,7 @@ if (result.error) {
 const express = require('express');
 const session = require('express-session');
 
+
 const routes = require('./routes/index.js');
 const routesAuth = require('./routes/auth.js');
 

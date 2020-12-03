@@ -1,0 +1,38 @@
+<% include ../partials/header %>
+<% include ../partials/navbar %>
+
+<div id="main">
+  <div class="inner">
+    <h1>Importar Jogadores</h1>
+
+    <!-- Table -->
+    <section>
+
+      <form method="post" action="/times/importar" enctype="multipart/form-data">
+        <div class="row gtr-uniform">
+          <div class="col-12">
+            <select name="time" id="time">
+              <% times.forEach(function(time) { %>
+              <option value="<%= time.id %>"><%= time.nome %></option>
+              <% }); %>
+            </select>
+          </div>
+          <div class="col-12">
+            <label for="csv">CSV de Jogadores</label>
+            <input type="file" name="csv" id="csv" placeholder="CSV de Jogadores" />
+          </div>
+          <div class="col-12">
+            <ul class="actions">
+              <li><input type="submit" value="Importar" class="primary" /></li>
+            </ul>
+          </div>
+        </div>
+      </form>
+
+
+    </section>
+
+  </div>
+</div>
+
+<% include ../partials/footer %>
