@@ -1,0 +1,13 @@
+[2020-12-03T23:18:10.930] [FATAL] logsDoSistema - Erro fatal ao acessar a página de logs, brincadeirinha.
+[2020-12-03T23:18:25.360] [FATAL] logsDoSistema - Erro fatal ao acessar a página de logs, brincadeirinha.
+[2020-12-03T23:21:06.771] [FATAL] logsDoSistema - Erro fatal ao acessar a página de logs, brincadeirinha.
+[2020-12-03T23:21:06.774] [ERROR] logsDoSistema - Data: <Buffer 5b 32 30 32 30 2d 31 32 2d 30 33 54 32 33 3a 31 37 3a 33 31 2e 30 35 37 5d 20 5b 45 52 52 4f 52 5d 20 6c 6f 67 73 44 6f 53 69 73 74 65 6d 61 20 2d 20 ... 463 more bytes>
+[2020-12-03T23:22:20.785] [FATAL] logsDoSistema - Erro fatal ao acessar a página de logs, brincadeirinha.
+[2020-12-03T23:23:42.763] [FATAL] logsDoSistema - Erro fatal ao acessar a página de logs, brincadeirinha.
+[2020-12-03T23:23:48.702] [FATAL] logsDoSistema - Erro fatal ao acessar a página de logs, brincadeirinha.
+[2020-12-03T23:23:49.511] [FATAL] logsDoSistema - Erro fatal ao acessar a página de logs, brincadeirinha.
+[2020-12-03T23:24:46.166] [FATAL] logsDoSistema - Erro fatal ao acessar a página de logs, brincadeirinha.
+[2020-12-03T23:24:48.407] [FATAL] logsDoSistema - Erro fatal ao acessar a página de logs, brincadeirinha.
+[2020-12-03T23:25:12.109] [FATAL] logsDoSistema - Erro fatal ao acessar a página de logs, brincadeirinha.
+[2020-12-03T23:25:40.142] [FATAL] logsDoSistema - Erro fatal ao acessar a página de logs, brincadeirinha.
+[2020-12-03T23:29:57.046] [FATAL] logsDoSistema - Erro fatal ao acessar a página de logs, brincadeirinha.

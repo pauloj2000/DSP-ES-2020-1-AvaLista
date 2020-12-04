@@ -1,0 +1,39 @@
+<% include ../partials/header %>
+<% include ../partials/navbar %>
+
+<div id="main">
+  <div class="inner">
+    <h1>Logs</h1>
+
+    <!-- Table -->
+    <section>
+
+
+      <%- message %>
+      <hr>
+
+      <div class="table-wrapper">
+        <table>
+          <tbody>
+            <tr>
+              <pre>
+                <code>
+                <%- linhasLog %>
+              </code>
+              </pre>
+            </tr>
+          </tbody>
+          <!-- <tfoot>
+            <tr>
+              <td colspan="2"></td>
+              <td>100.00</td>
+            </tr>
+          </tfoot> -->
+        </table>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<% include ../partials/footer %>

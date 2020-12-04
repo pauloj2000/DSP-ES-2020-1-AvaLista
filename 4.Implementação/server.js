@@ -11,12 +11,19 @@ if (result.error) {
 
 const express = require('express');
 const session = require('express-session');
+const log4js = require('log4js');
+log4js.configure({
+  appenders: { logsDoSistema: { type: "file", filename: "logs/logsDoSistema.txt" } },
+  categories: { default: { appenders: ["logsDoSistema"], level: "error" } }
+});
 
 
 const routes = require('./routes/index.js');
+const routesLog = require('./routes/logs.js');
+const routesJogos = require('./routes/jogos');
 const routesAuth = require('./routes/auth.js');
 
-
+const logger = log4js.getLogger('logsDoSistema');
 
 const port = process.env.PORT || 3000;
 
@@ -62,8 +69,10 @@ app.set('view engine', 'ejs');
 // ================================================================
 // setup routes
 // ================================================================
-routesAuth(app);
-routes(app, restrict);
+routesAuth(app, logger);
+routesLog(app, restrict, logger);
+routesJogos(app, restrict, logger);
+routes(app, restrict, logger);
 
 // ================================================================
 // start our server
