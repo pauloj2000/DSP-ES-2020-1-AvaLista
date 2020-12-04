@@ -15,8 +15,7 @@ const log4js = require('log4js');
 log4js.configure({
   appenders: { logsDoSistema: { type: "file", filename: "logs/logsDoSistema.txt" } },
   categories: {
-    default: { appenders: ["logsDoSistema"], level: "error" },
-    trace: { appenders: ["logsTrace"], level: 'trace' }
+    default: { appenders: ["logsTrace"], level: "trace" },
   }
 });
 
