@@ -9,7 +9,7 @@ const upload = multer({ dest: 'tmp/csv/' });
 const csv = require('csv-parser');
 const fs = require('fs');
 
-module.exports = function (app, restrict) {
+module.exports = function (app, restrict, loggerError, loggerTrace) {
   app.get('/', function (req, res) {
     res.render('auth/login');
   });
@@ -31,6 +31,7 @@ module.exports = function (app, restrict) {
   });
 
   app.get('/times', restrict, function (req, res) {
+    loggerTrace.trace('Tela de times acessada.');
     getTimes(function (err, times) {
       if (!err) {
         res.render('pages/times', {
@@ -46,6 +47,7 @@ module.exports = function (app, restrict) {
   });
 
   app.get('/times/importar', restrict, function (req, res) {
+    loggerTrace.trace('Tela de importação de times acessada.');
     getTimes(function (err, times) {
       if (!err) {
         res.render('pages/timesImport', {
@@ -61,6 +63,7 @@ module.exports = function (app, restrict) {
   });
 
   app.post('/times/importar', upload.single('csv'), restrict, function (req, res) {
+    loggerTrace.trace('Operação de importação de times utilizada.');
     const { time } = req.body;
 
     const fileRows = [];
@@ -91,6 +94,7 @@ module.exports = function (app, restrict) {
   });
 
   app.get('/times/exportar', restrict, function (req, res) {
+    loggerTrace.trace('Tela de exportação de times acessada.');
     getTimes(function (err, times) {
       if (!err) {
         res.render('pages/timesExport', {
@@ -106,6 +110,7 @@ module.exports = function (app, restrict) {
   });
 
   app.post('/times/exportar', restrict, function (req, res) {
+    loggerTrace.trace('Operação de exportação de times utilizada.');
     const { time } = req.body;
     console.log('REQBODY', req.body);
     console.log('TIME REQBODY', time);

@@ -6,7 +6,7 @@
 const dotenv = require('dotenv');
 const result = dotenv.config()
 if (result.error) {
-  throw result.error
+  console.log('RESUL ERROR HERE', result.error);
 }
 
 const express = require('express');
@@ -14,7 +14,10 @@ const session = require('express-session');
 const log4js = require('log4js');
 log4js.configure({
   appenders: { logsDoSistema: { type: "file", filename: "logs/logsDoSistema.txt" } },
-  categories: { default: { appenders: ["logsDoSistema"], level: "error" } }
+  categories: {
+    default: { appenders: ["logsDoSistema"], level: "error" },
+    trace: { appenders: ["logsTrace"], level: 'trace' }
+  }
 });
 
 
@@ -25,7 +28,8 @@ const routesJogador = require('./routes/jogador');
 const routesUsuario = require('./routes/usuario');
 const routesAuth = require('./routes/auth.js');
 
-const logger = log4js.getLogger('logsDoSistema');
+const loggerError = log4js.getLogger('logsDoSistema');
+const loggerTrace = log4js.getLogger('logsTrace');
 
 const port = process.env.PORT || 3000;
 
@@ -71,12 +75,12 @@ app.set('view engine', 'ejs');
 // ================================================================
 // setup routes
 // ================================================================
-routesAuth(app, logger);
-routesLog(app, restrict, logger);
-routesJogos(app, restrict, logger);
-routesJogador(app, restrict, logger);
-routesUsuario(app, restrict, logger);
-routes(app, restrict, logger);
+routesAuth(app, loggerError, loggerTrace);
+routesLog(app, restrict, loggerError, loggerTrace);
+routesJogos(app, restrict, loggerError, loggerTrace);
+routesJogador(app, restrict, loggerError, loggerTrace);
+routesUsuario(app, restrict, loggerError, loggerTrace);
+routes(app, restrict, loggerError, loggerTrace);
 
 // ================================================================
 // start our server

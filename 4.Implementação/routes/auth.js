@@ -4,10 +4,11 @@
 // const jsonParser = bodyParser.json();
 const authenticate = require('../model/auth/authenticate');
 
-module.exports = function (app) {
+module.exports = function (app, loggerError, loggerTrace) {
   app.post('/login', function (req, res) {
     authenticate(req.body.email, req.body.password, function (err, user) {
       if (!err) {
+        loggerTrace.trace('Login realizado.');
         // Regenerate session when signing in
         // to prevent fixation
         req.session.regenerate(function () {
@@ -18,6 +19,7 @@ module.exports = function (app) {
           res.redirect('/times');
         });
       } else {
+        loggerTrace.trace('Tentativa de login mal sucedida');
         req.session.error = user;
         res.redirect('/login');
       }
