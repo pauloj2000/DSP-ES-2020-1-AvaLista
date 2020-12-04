@@ -3,12 +3,14 @@
 
 <div id="main">
   <div class="inner">
-    <h1>Importar Jogadores</h1>
+    <h1>Exportar Jogadores</h1>
 
     <!-- Table -->
     <section>
 
-      <form method="post" action="/times/importar" enctype="multipart/form-data">
+      <%= message %>
+
+      <form method="post" action="/times/exportar">
         <div class="row gtr-uniform">
           <div class="col-12">
             <select name="time" id="time">
@@ -18,12 +20,8 @@
             </select>
           </div>
           <div class="col-12">
-            <label for="csv">CSV de Jogadores</label>
-            <input type="file" name="csv" id="csv" placeholder="CSV de Jogadores" />
-          </div>
-          <div class="col-12">
             <ul class="actions">
-              <li><input type="submit" value="Importar" class="primary" /></li>
+              <li><input type="submit" value="Exportar" class="primary" /></li>
             </ul>
           </div>
         </div>

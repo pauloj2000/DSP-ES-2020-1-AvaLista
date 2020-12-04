@@ -1,6 +1,6 @@
 'use strict';
 
-const { getTimes } = require('../model/times/times');
+const { getTimes, importJogadores, exportJogadores } = require('../model/times/times');
 
 
 const multer = require('multer');
@@ -46,20 +46,18 @@ module.exports = function (app, restrict) {
   });
 
   app.get('/times/importar', restrict, function (req, res) {
-    console.log('route import');
     getTimes(function (err, times) {
       if (!err) {
-        res.render('pages/timesImprot', {
+        res.render('pages/timesImport', {
           times: times
         });
       } else {
         req.session.error = err;
-        res.render('pages/timesImprot', {
+        res.render('pages/timesImport', {
           times: [],
         });
       }
     });
-
   });
 
   app.post('/times/importar', upload.single('csv'), restrict, function (req, res) {
@@ -71,25 +69,55 @@ module.exports = function (app, restrict) {
     fs.createReadStream(req.file.path)
       .pipe(csv())
       .on('data', (row) => {
-        importJogadores(row);
+        fileRows.push(row);
       })
       .on('end', () => {
         console.log('CSV file successfully processed');
+
+        importJogadores(time, fileRows, function (err, result) {
+          console.log('Err, result', err, result);
+          if (err) {
+            req.session.error = result;
+          } else {
+            req.session.success = 'Importação bem sucedida.'
+          }
+          res.redirect('/times');
+        });
+
         fs.unlinkSync(req.file.path);
       });
 
 
-    // csv.fromPath(req.file.path)
-    //   .on("data", function (data) {
-    //     fileRows.push(data); // push each row
-    //   })
-    //   .on("end", function () {
-    //     console.log(fileRows) //contains array of arrays. Each inner array represents row of the csv file, with each element of it a column
-    //     fs.unlinkSync(req.file.path);   // remove temp file
-    //     //process "fileRows" and respond
-    //   });
+  });
 
-    console.log(time, fileRows);
+  app.get('/times/exportar', restrict, function (req, res) {
+    getTimes(function (err, times) {
+      if (!err) {
+        res.render('pages/timesExport', {
+          times: times
+        });
+      } else {
+        req.session.error = err;
+        res.render('pages/timesExport', {
+          times: [],
+        });
+      }
+    });
+  });
+
+  app.post('/times/exportar', restrict, function (req, res) {
+    const { time } = req.body;
+    console.log('REQBODY', req.body);
+    console.log('TIME REQBODY', time);
+    exportJogadores(time, function (err, result) {
+      //this statement tells the browser what type of data is supposed to download and force it to download
+      res.writeHead(200, {
+        'Content-Type': 'text/csv',
+        'Content-Disposition': 'attachment; filename=*jogadores*.csv'
+      });
+      // whereas this part is in charge of telling what data should be parsed and be downloaded
+      res.end(result, "binary");
+    });
   });
 
 };

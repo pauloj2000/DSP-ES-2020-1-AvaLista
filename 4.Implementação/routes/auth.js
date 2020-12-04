@@ -15,7 +15,7 @@ module.exports = function (app) {
           // in the session store to be retrieved,
           // or in this case the entire user object
           req.session.user = user;
-          res.redirect('/element');
+          res.redirect('/times');
         });
       } else {
         req.session.error = user;
