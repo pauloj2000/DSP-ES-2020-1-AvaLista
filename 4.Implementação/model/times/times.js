@@ -3,7 +3,12 @@ const format = require('pg-format');
 
 module.exports = {
   getTimes: function (callback) {
-    pool.query('SELECT * from times', (err, res) => {
+    pool.query(`SELECT times.id, times.nome, SUM(j.score) as score
+      FROM times
+      LEFT JOIN jogadores_times jt ON jt.time_id = times.id
+      LEFT JOIN jogadores j ON jt.jogador_id = j.id
+      GROUP BY times.id
+    `, (err, res) => {
       if (err || res.rows.length == 0) {
         console.log(err);
         callback(true, 'Nenhum time encontrado');

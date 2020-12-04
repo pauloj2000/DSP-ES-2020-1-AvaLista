@@ -3,19 +3,17 @@
 
 <div id="main">
   <div class="inner">
-    <h1>Times</h1>
+    <h1>Usuários</h1>
 
     <!-- Table -->
     <section>
 
       <div class="row">
         <div class="col-6">
-          <a href="/times/importar" class="button primary small">Importar Jogadores</a>
-          <a href="/times/exportar" class="button default small">Exportar Jogadores</a>
         </div>
         <div class="col-3"></div>
         <div class="col-2">
-          <a href="/jogador" class="button default small">Cadastrar Jogador</a>
+          <a href="/usuario/cadastrar" class="button default small">Cadastrar Usuário</a>
         </div>
       </div>
 
@@ -28,24 +26,18 @@
             <tr>
               <th>ID</th>
               <th>Nome</th>
-              <th>Score Total Jogadores</th>
+              <th>Email</th>
             </tr>
           </thead>
           <tbody>
-            <% times.forEach(function(time) { %>
+            <% usuarios.forEach(function(usuario) { %>
             <tr>
-              <td> <%= time.id %> </td>
-              <td> <%= time.nome %> </td>
-              <td> <%= time.score %> </td>
+              <td> <%= usuario.id %> </td>
+              <td> <%= usuario.nome %> </td>
+              <td> <%= usuario.email %> </td>
             </tr>
             <% }); %>
           </tbody>
-          <!-- <tfoot>
-            <tr>
-              <td colspan="2"></td>
-              <td>100.00</td>
-            </tr>
-          </tfoot> -->
         </table>
       </div>
     </section>

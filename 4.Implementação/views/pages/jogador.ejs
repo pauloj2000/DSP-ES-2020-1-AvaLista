@@ -1,0 +1,49 @@
+<% include ../partials/header %>
+<% include ../partials/navbar %>
+
+<div id="main">
+  <div class="inner">
+    <h1>Cadastrar Jogador</h1>
+
+    <!-- Table -->
+    <section>
+
+      <%= message %>
+
+      <form method="post" action="/jogador">
+        <div class="row gtr-uniform">
+          <div class="col-12">
+            <label for="time">Time</label>
+            <select name="time" id="time">
+              <% times.forEach(function(time) { %>
+              <option value="<%= time.id %>"><%= time.nome %></option>
+              <% }); %>
+            </select>
+          </div>
+          <div class="col-6">
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome" placeholder="" />
+          </div>
+          <div class="col-6">
+            <label for="dataNascimento">Data de Nascimento</label>
+            <input type="date" name="dataNascimento" id="dataNascimento" placeholder="Data de Nascimento" />
+          </div>
+          <div class="col-6">
+            <label for="score">Score</label>
+            <input type="number" name="score" id="score" placeholder="0" value="0" />
+          </div>
+          <div class="col-12">
+            <ul class="actions">
+              <li><input type="submit" value="Cadastrar" class="primary" /></li>
+            </ul>
+          </div>
+        </div>
+      </form>
+
+
+    </section>
+
+  </div>
+</div>
+
+<% include ../partials/footer %>

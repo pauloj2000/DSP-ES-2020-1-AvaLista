@@ -1,0 +1,41 @@
+<% include ../partials/header %>
+<% include ../partials/navbar %>
+
+<div id="main">
+  <div class="inner">
+    <h1>Cadastrar Usuário</h1>
+
+    <!-- Table -->
+    <section>
+
+      <%= message %>
+
+      <form method="post" action="/jogador">
+        <div class="row gtr-uniform">
+          <div class="col-6">
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome" placeholder="" />
+          </div>
+          <div class="col-6">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Email" />
+          </div>
+          <div class="col-6">
+            <label for="senha">Senha</label>
+            <input type="password" name="senha" id="senha" placeholder="*****" />
+          </div>
+          <div class="col-12">
+            <ul class="actions">
+              <li><input type="submit" value="Cadastrar" class="primary" /></li>
+            </ul>
+          </div>
+        </div>
+      </form>
+
+
+    </section>
+
+  </div>
+</div>
+
+<% include ../partials/footer %>

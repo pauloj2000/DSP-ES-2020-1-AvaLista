@@ -16,3 +16,9 @@ CREATE TABLE jogadores_times (id serial PRIMARY KEY, jogador_id INTEGER NOT NULL
 INSERT INTO jogadores_times (jogador_id, time_id) VALUES (1, 1);
 
 
+-- SELECT TIME COM SCORE
+SELECT times.id, times.nome, SUM(j.score) as score
+FROM times
+LEFT JOIN jogadores_times jt ON jt.time_id = times.id
+LEFT JOIN jogadores j ON jt.jogador_id = j.id
+GROUP BY times.id

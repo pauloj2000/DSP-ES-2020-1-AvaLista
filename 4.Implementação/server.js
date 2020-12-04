@@ -21,6 +21,8 @@ log4js.configure({
 const routes = require('./routes/index.js');
 const routesLog = require('./routes/logs.js');
 const routesJogos = require('./routes/jogos');
+const routesJogador = require('./routes/jogador');
+const routesUsuario = require('./routes/usuario');
 const routesAuth = require('./routes/auth.js');
 
 const logger = log4js.getLogger('logsDoSistema');
@@ -72,6 +74,8 @@ app.set('view engine', 'ejs');
 routesAuth(app, logger);
 routesLog(app, restrict, logger);
 routesJogos(app, restrict, logger);
+routesJogador(app, restrict, logger);
+routesUsuario(app, restrict, logger);
 routes(app, restrict, logger);
 
 // ================================================================
